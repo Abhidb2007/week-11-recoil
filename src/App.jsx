@@ -1,27 +1,50 @@
-import { useState } from "react";
+import { RecoilRoot, atom, useRecoilState } from "recoil";
+import "./App.css";
+
+// define atom (global state)
+const countState = atom({
+  key: "countState",
+  default: 0,
+});
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  function increase() {
-    setCount(count + 1);
-  }
-
-  function decrease() {
-    setCount(count - 1);
-  }
-
-  function reset() {
-    setCount(0);
-  }
-
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Count: {count}</h1>
-      <button onClick={increase}>Increase</button>
-      <button onClick={decrease}>Decrease</button>
-      <button onClick={reset}>Reset</button>
+    <RecoilRoot>
+      <Counter />
+    </RecoilRoot>
+  );
+}
+
+function Counter() {
+  return (
+    <div>
+      <CurrentCount />
+      <Increase />
+      <Decrease />
     </div>
+  );
+}
+
+function CurrentCount() {
+  const [count] = useRecoilState(countState);
+  return <h2>Count: {count}</h2>;
+}
+
+function Increase() {
+  const [count, setCount] = useRecoilState(countState);
+  return (
+    <button onClick={() => setCount(c => c + 1)}>
+      Increase
+    </button>
+  );
+}
+
+function Decrease() {
+  const [count, setCount] = useRecoilState(countState);
+  return (
+    <button onClick={() => setCount(c => c - 1)}>
+      Decrease
+    </button>
   );
 }
 
