@@ -1,13 +1,11 @@
-import { useState, memo } from "react";
+import { memo } from "react";
 import { RecoilRoot, atom, useRecoilState } from "recoil";
 
-// ✅ Create a global atom for count
 const countState = atom({
-  key: "countState", // unique ID
+  key: "countState",
   default: 0,
 });
 
-// ✅ Counter component (memoized to avoid extra re-renders)
 const Counter = memo(function Counter() {
   const [count, setCount] = useRecoilState(countState);
 
@@ -28,7 +26,6 @@ const Counter = memo(function Counter() {
   );
 });
 
-// ✅ Main App
 function App() {
   return (
     <RecoilRoot>
