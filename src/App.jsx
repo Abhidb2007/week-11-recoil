@@ -1,11 +1,14 @@
 import {useEffect,useState,memo} from "react"
 import"./App.css"
+import { RecoilRoot } from "recoil";
 function App(){
   return(
     <div>
-      <Buttons>
-        <Counter/>
-      </Buttons>
+      <RecoilRoot>
+        <Buttons/>
+        <Counter/> 
+        <IsEven/>
+      </RecoilRoot>
     </div>
   )
 }
