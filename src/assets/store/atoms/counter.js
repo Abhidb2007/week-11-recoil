@@ -4,3 +4,12 @@ export const counterAtom=atoms({
     key:"counter"
 
 })
+export const evenSelector=selector({
+    key:"isEvenSelecotor",
+    get: function({get}){
+        const currentCount=get(counterAtom);
+        const isEven=(currentCount%2==0);
+        return isEven;
+    }
+
+})
