@@ -10,7 +10,7 @@ const counterAtom = atom({
 function App() {
   return (
     <RecoilRoot>
-      <div style={{ textAlign: "center", marginTop: "20px", color: "green" }}>
+      <div style={{ textAlign: "center", marginTop: "80px", color: "green" }}>
         <Buttons />
         <Counter />
         <IsEven />
